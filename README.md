@@ -568,12 +568,67 @@ need to make them independent
 * When to Use it
     * When you want to decouple different parts of a system
 Layer Supertype
-Separated Interface
+* A type that acts as the supertype for all types in its layer
+* Super class that contains common functionality in a layer
+* How it works
+    * Use this pattern when you have common features from all objects in a layer
+* Example
+    * Domain objects can have a common superclass for ID handling
+Separated Interface ??
+* Defines an interface in a separate package from its implementation
+* Avoids creating unwanted dependencies
+* Decouples parts of a system
+    * Controls the dependencies between packages
+    * Implementation can easily be changed
+* How it works:
+    * Interface and implementation is placed in separate packages
+    * Client uses the interface
+    * Implementation can be determined at configuration time
+* Layered System
+    * Domain layer depends on Data Source layer
+    * Data Source layer cannot access Domain layer
+* User of the interface should not know the implementation
 Registry
+* A well-known object that other objects can use to find common objects and services
+* A registry is a global object
+* How It Works
+    * Object that can easily be accessed at any time
+    * Only one object available at any time
+    * Provides services or information
+    * Can have different scopes
+    * Usually not mutable data
+    * Example: System Settings, Loggers
+* Only one instance running
+* When to Use it?
+    * As a last resort 
 Value Object
+* A small simple object, like money or date range, whose equality isn’t based on identity
+* Small and easily created objects that hold and represent some data
+* How it works
+    *  Not based on identity
+    * Equality is based on comparing values of the object
+    * Can be immutable (example is the Date class)
+* When to use it
+    * When you’re basing equality on something other than identity
 Plugin
+* Links classes during configuration rather than compilation
+* Use plugin to provide specific implantation
+* Use factory to load in the plugin
+* A caller obtains a Plugin implementation of a separated
+interface
+* When to Use It
+    * Use plugin when you have behavior that requires different implementations based on runtime environment
 Service Stub
-
+* Removes dependence upon problematic
+services during testing
+* Enterprise systems often need to access external system
+    * Can be out of developers control
+* Service stub provides implementation for development and testing purposes
+    * Runs locally and in-memory
+    * Implements the same interface of the gateway used to
+access the real service
+* When to Use It
+    *  When dependence on a particular service is hindering development or testing
 
 ## Quizes
 Which	of	these	statements	is	not	true
@@ -582,3 +637,41 @@ Which	of	these	statements	is	not	true
 * X C)	Design	Patterns	are	based	on	specific	programming	languages
 * D)	Design	Patterns	can	have	ambiguous	names
 
+# F-07 Visualising Software Development
+* Diagrams are communication tools
+* Architecture is about Structure and Vision
+* Helps everybody in the team get the “big picture”
+* Shared vision
+* Map that can be used to navigate the source code
+* Helps new employees get on track
+* Focus on high-level structure
+* Create a vision that everybody in the team can understand and commit to
+* Class diagrams are too detailed and should be considered
+temporary designs replaced by code
+* Context, Containers and Component diagrams are usually
+sufficient
+
+The C4
+* Context, Container, Component, Classes
+* Create number of diagram with different levels of abstractions
+* Number of simpler diagrams can be more effective than one
+complex one - There is no one “Big Picture”
+
+Abstractions
+* **Classes**: Smallest building blocks
+* **Components**: logical grouping of classes
+    * Services are components
+    * Example: Authentication Service
+    * Services are a set of collaborating classes, sitting behind an API
+* **Containers**: what the component runs in
+    * Web server, application server
+    * Typically executable that are started as part of the system Java EJB, .NET
+* ***System**: highest level of abstraction
+    * Made up of multiple containers and defines the links between them
+
+Types of diagrams:
+* Classes: showing classes and their relationships, useful to
+explain design patterns
+* Component: for each container, what are the key logical components and their relationships
+* Container: high-level technology choices and responsibilities
+* Context: A high-level diagram that shows actors and system dependencies
