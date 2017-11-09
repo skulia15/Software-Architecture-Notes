@@ -1079,3 +1079,123 @@ Defines an application's boundary
 * Provides a set of available operations from the perspective of
 interfacing client layers
 * Encapsulates the application's business logic
+
+# F-14 Data Source Layer
+
+## Useful Patterns
+Data Transfer Object
+* An object that carries data between processes in order to reduce the
+number of method calls
+* Object that is used to transfer data between layers
+* Data source layer creates DTO for transfer
+* 
+
+Record Set
+* An in-memory representation of tabular data
+* Contains the result of a database query
+* One record is current, clients can traverse the set
+* Usually provided by the database code
+* When to use it:
+    * when returning data from a query
+
+Table Data Gateway == Data Access Objects == DAO
+* Acts as a Gateway to a database table
+* An object that acts as a Gateway to a database table. One
+instance handles all the rows in the table
+* How It Works:
+    * Simple interface to a table with several find methods and methods for maintaining data
+    * CRUD methods
+    * Acts as a gateway to a table
+    * One gateway for each table
+    * Finders return Collection of DTOs or Record Set
+* When to Use It:
+    * Works for **Table Module** since it is based on **Record Set** 
+    * Useful for web application where Domain Model is used
+
+
+Row Data Gateway
+* An object that acts as a Gateway to a single record in a data
+source. There is only one instance per row.
+* How It Works
+    *    Object that is exactly one single record
+    *    Each table column is a field in the object
+    *    Do not have logic
+    *    Finder object
+* When to Use It
+    *   Works well for simple domain layer for example Transaction Script
+
+Active Record
+* Wraps a row in a database table or view, encapsulates the database
+access, and adds domain logic on that data
+* How It Works
+    *    Each object can read and store itself
+    *    Contain Domain Logic
+* When to Use It
+    * When Domain Logic is not too complex
+    * When using Transaction Script
+Data Mapper
+* A layer of Mappers that moves data between objects and database
+while keeping them independent of each other and the
+mapper itself
+* Separates the in-memory objects from the database
+* How It works
+    *    Simple Data Mappers map in-memory object to table on a field-to-field basis
+    *   Others need to map more complicated object hierarchies to multiple tables
+    *    Mapper uses Identity Map to see if object is already loaded
+* Unit of Work pattern
+* When to Use It
+    *    Database and object model must be independent
+    *    Data Mappers are useful with Domain Model 
+    *    For simple Domain Model an Active Record could be used, but as it
+becomes more complicated some mapping is needed
+* Simple example
+    *   Updating data
+    *    Client asks the mapper to save a domain object
+    *    The mapper pulls the data out of the domain object and saves to the
+database
+
+## Quizes
+Which	of	these	statements	is	false
+* A) Data	tends to stick where it	lands
+* B) Database programming tends to be low-level
+* X C) Objects tend to map nicely to the database
+* D) Database programming tends to be repetitive	
+
+Data Source class maps	nicely	to	the	rows	in	a	table	and	contains	
+some	useful	methods
+* A) Row	Data	Gateway
+* B) Table	Data	Gateway
+* X C) Active	Record
+* D) Data	Mapper
+
+# F-15 Object Relational Mapping
+Use a mapping layer to map between objects and tables
+* Mapping a data representation from an object model to a relational data
+model with a SQL-based schema
+
+Two different paradigms
+1. Objects
+2. Tables
+
+Advantages of ORM
+* Can radically reduce the amount of code you need to write
+* More Productivity
+* Applications are easier to maintain
+* Fosters thinking about an OO domain model
+
+Disadvantages
+* Some loss of control over the persistence process
+* May be more difficult to tune queries
+* Performance characteristics of the tool may affect your application’s
+performance
+
+NoSQL Databases
+* Key-Value
+* Basically Map<String, Object>
+* *"schema on read* one entry may be a
+String, another a Date, a third PNG image
+* Key-Value stores offer no indexes, and no querying capabilities
+* Documents can have any structure -JSON
+* MongoDB, MarkLogic, CouchDB, RavenDB
+
+#F-18
