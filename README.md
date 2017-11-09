@@ -933,9 +933,12 @@ application state (HATEOAS)
     * indication of maximum effective load
 
 ### Scalability
+Scalability is the ability of a system, network, or process to handle a growing amount of work in a capable manner or its ability to be enlarged to accommodate that growth
+
+Scalability is the measure of how adding resource (usually hardware) affects the performance
 * The measure of how adding a resource affects the performance
-    * Vertical: Make the hardware faster, more memory etc
-    * Horizontal: Get more hardware – scaling out
+    * Vertical Scalability(up): Add more capacity to your hardware. Increase Server power, Make the hardware faster, more memory etc
+    * Horizontal Scalability (out): Add more machines. Increase the servers, Get more hardware – scaling out
 * Request per second
     * How many concurrent transaction can the system handle
 
@@ -1198,4 +1201,261 @@ String, another a Date, a third PNG image
 * Documents can have any structure -JSON
 * MongoDB, MarkLogic, CouchDB, RavenDB
 
-#F-18
+# F-18
+
+## User Interfaces
+* Clear separation of concerns is important
+* Define the Presentation Logic
+* Design the domain layer so the presentation can get the information
+needed 
+* Presentation logic must avoid making assumptions on the domain –
+the semantics should be a part of the domain
+* Use Data Transfer Objects to store semantics
+
+## Client Types:
+* Native OS Applications
+    * Windows, iOS, Android, Linux
+* Embedded
+    * Run inside Web Browsers
+    *    Flash, Java Applets
+* Interactive Web Applications
+    * HTML with JavaScript
+* HTML Presentation in Browsers
+    * Simple HTML
+
+## MOBILE WEB
+* pros:
+    * Content is indexable
+    * Device independent (almost)
+    * Easier/Faster development & update
+    * Easier to measure
+* cons:
+    * Connection Dependence
+    * Limited hardware integration
+    * Bandwidth & browser limited UX
+
+## MOBILE APP - Runs on native hardware
+* pros:
+    * Connection independence
+    * Better hardware integration
+    * Better graphic performance & UX
+* cons
+    * Content is not web indexable
+    * Device dependence
+    * More expensive development & update
+    * More complex to measure
+    * 
+Content Type
+* **Static Content** such as graphic assets, doesn’t change frequently
+* **Editable Content** such as text, layout, mashed-up content, editable by content owners, frequently
+* **Dynamic Content** stored in database and manipulated by the domain logic
+
+## Content Management Systems
+Content is separated form the Enterprise system
+
+* Managed by CMS software with its own database
+
+* HTTP API calls for dynamic content from the enterprise system
+
+## Application Servers
+Domain Components are deployed on Application Servers
+* Distributed Multi-tiered Applications
+* Web Servers, EJB Servers
+
+## Lightweight Containers
+Assemble components from different projects into a cohesive
+application
+
+* Wiring is done with “Inversion of Control” - config
+* Provide life-cycle management of objects
+* Provide context
+
+## Domain layer Design Patterns
+* Transaction Script
+    * Procedural
+    * Encapsulates the logic of each transaction
+    * Works well for systems that are transactional in nature
+    * Drawbacks:
+        * Does not handle complexity of logic
+        * Code duplications
+* Domain Model
+    * Works nicely for any type of domain logic
+    * Flexibility in creating an object oriented classes that use abstractions and polymorphism
+    * Beautiful code
+    * Drawbacks:
+        * Learning curve – understanding the model
+        *  Requires skills
+        * Doesn’t always map easily to relational database 
+* Table Module
+    * Works well for data driven applications
+    * Fits well with relational databases
+    * Requires Record Set functionality
+    * Drawbacks:
+        * Structured around the database
+        * Needs tooling support, for example Record Set
+        * Can become dependent on the environment
+# Data Source Design patterns:
+ Transaction Script
+ * Fits well to use the Gateway patterns
+    * Row or Table-Data Gataway
+    * if working with tables: Table Data Gateway
+Table Module
+* Table Module requires good support from Record Set
+* Table Data Gateway fits this well
+Domain Model
+* If the Domain Model is fairly simple, and maps the database, Active Record works well
+* If you want to provide abstraction the gateway patterns become better choice, Row Data Gateway and Table Data Gateway
+*  Data Mapper if need for independence
+
+## Quizes
+We have a relatively simple domain logic that maps nicely to the
+data schema, and we have good tools for Record Set handling.
+What Domain Layer pattern would make sense?
+* A) Service Layer
+* B) Domain Model
+* C) Transaction Script
+* X D) Table Module
+
+# F-19 Scalability
+## Requirements of 21st century web systems
+* High availability
+* Millions of simultaneous users
+* Peak load of 1000s tx/sec
+
+## Business Transaction
+* Transactions that contain more than one request
+* Example: User logs in, add to shopping card, buys, logs out
+* State between requests?
+
+## State
+* Server with state vs. stateless server
+    * Stateful servers keep the state between requests
+    * Clients keep the state if the servers are stateless
+
+## Stateless servers 
+* scale much better
+* Use fewer resources
+* Example:
+    * View book information
+    * Each request is separate
+* REST was designed to be stateless
+
+## Stateful Servers
+* The norm
+*  they take resources and cause server affinity
+    *  One stateful object per user
+    * Object are Idle 90% of the time
+
+## Session State
+State that is relevant to a session
+* State used in business transactions and belong to a specific client
+* Data structure belonging to a client
+
+Session is distinct from record data
+* Record data is a long-term persistent data in a database 
+* Session state might end up as record data
+
+### Ways to Store Session State
+The client using a web browser or app - Client Session State
+* Desktop applications can store the state in memory
+* cookies
+* DTO
+* Session ID - minimum state
+* REST (y)
+
+* When to use:
+    * Stateless servers
+    * Maximal clustering and failover resiliency 
+* Drawbacks:
+    * Does not work well for large amount of data
+    * Data gets lost if client crashes
+    * Security issues
+
+The Server running the web application and domain - Server Session State
+* Session Objects – data structures on the server keyed to session ID
+* binary, objects or XML
+* Stored in: Memory, application server, file or local or in-memory database
+
+* pros:  Simplicity, it is easy to store and receive data
+* cons: 
+    * Data can get lost if server goes down
+    * Clustering and session migration becomes difficult
+    *  Space complexity (memory of server)
+    *  Inactive sessions need to be cleaned up
+
+The database storing all the data – Database Session State
+* Session State stored in the database
+* Can be stored as temporary data to distinguish from committed record data
+* Pending session data
+* When to Use It:
+    * Improved scalability – easy to add servers
+    * Works well in clusters
+    * Data is persisted, even if data centre goes down
+* Cons:
+    * Database becomes a bottleneck
+    * Need of clean up procedure of pending data that did not become record data – user just left
+
+## Caching
+Caching is temporary data that is kept in memory between requests for performance reasons
+* Not session data!
+* Saves the round-trip to the database
+* Stale cache -Distributed caching (message driven cache) is one way to solve that
+
+## Distributed Architecture
+Distribute processing by placing objects on different nodes
+Benefits: 
+* Load is distributed between different nodes giving overall better performance?
+* – It is easy to add new nodes
+* Middleware products make calls between nodes transparent
+
+* Fowler’s First Law of Distributed Object Design: Don't Distribute your objects!
+
+### Remote and Local Interfaces
+
+Local calls - Calls between components on the same node are local
+* Very fast
+
+Remote calls - Calls between components on different machines are remote
+* With fine-grained object oriented design, remote components can kill performance
+* With distributed architectures, interfaces must be course-grained
+    * Minimising remote function calls
+
+Better distribution model (X scaling)
+*  Load Balancing or Clustering the application involves putting several copies of the same application on different nodes
+
+Scalability
+* Session migration
+    * Move the session for one server to another
+* Server affinity
+    *  Keep the session on one server and make the client always use the
+same server
+
+* Load Distribution - Use number of machines to handle requests
+    * Load Balancer directs all request to particular server - server affinity
+
+* Clustering
+    * With clustering, servers are connected together as they were a single computer
+    * Problem is with state 
+        *  State in application servers reduces scalability 
+        *  Clients become dependant on particular nodes
+
+### Amdahl’s Law
+This law is used to find the maximum expected improvement to an
+overall system when only part of the system is improved
+
+In parallel computing, it states that a small portion of the program
+which cannot be parallelized will limit the overall speed-up available
+from parallelization
+
+Amdahl’s Corollary
+* Make the common case fast (Common case = most time consuming)
+* 
+## Quizes
+We are building an application for processing development
+grants. The application is complicated and users can login any
+time and continue work on their application. What design
+pattern would we use for storing the session?
+* A) Client Session State
+* B) Server Session State
+* X C) Database Session State
+* D) No state required
