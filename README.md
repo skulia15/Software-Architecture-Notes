@@ -182,8 +182,8 @@ messaging systems, transaction monitors
 Frameworks is prewritten code to which you add your own code
 to solve a problem in a specific domain
 * Developers extend and add their business requirements
-Frameworks define the support structure for how to organise
-and build systems
+* Frameworks define the support structure for how to organise and build systems
+* We use the framework to implement our business logic
 * Can improve productivity
 * We can use existing frameworks or build our own
 
@@ -218,13 +218,15 @@ Organisations which design systems are constrained to
 produce designs which are copies of the communication
 structures of these organisations
 
-In an organisation with three departments you end up
+* In an organisation with three departments you end up
 with three parts of the software applications
 
-Due to communication and power structure - people want
+* Due to communication and power structure - people want
 to control their schedule and not depend on others
 
-Directly leads to technical debt
+* Directly leads to technical debt
+
+* Priorities of teams are not shared
 
 ## Conway’s Second Law
 There’s never enough time to do something right, but
@@ -334,13 +336,19 @@ extendable
     * each server is responsible for only a subset of the data. Some component of the system is responsible for routing each request to the appropriate server
 
 ## SOA Service Oriented Architecture, Better: Microservice architecture
-SOA actually means that components of an application act as interoperable services, and can be used
-independently and recombined into other applications
+SOA actually means that components of an application act as **interoperable services**, and can be used
+**independently and recombined** into other applications
 
 * Software Architecture where all components are designed to be services
 * Applications composed of interoperable services
 * Easy to build new services, easy to change
 * Parts of the systems need to change more than others
+
+Definition of a Service
+* Service is a component that **replaceable** and
+independently upgradable
+* Services are like the Unix commands where output from
+one is in input to another
 
 ### Bezos Mandate
 1. All teams will henceforth expose their data and functionality through service interfaces
@@ -353,12 +361,15 @@ independently and recombined into other applications
 
 ### Microservices
 The microservice architectural style is an approach to
-developing a single application as a suite of small services, each
-running in its own process and communicating with lightweight
-mechanisms, often an HTTP resource API
+developing a single application as a suite of small services, each running in its own process and communicating with lightweight mechanisms, often an HTTP resource API
 
 ### Single Responsibility Principle (SPR) 
-a class should have one and only one reason to change, that *“reason to change”* is its responsibility.
+* a class should have one and only one reason to change, that  **reason to change**  is its responsibility.
+* Gather together those things that change for the same reason, and separate those things that change for different reasons 
+* Service boundaries focus on business boundaries
+* Service is independently deployable
+
+
 
 ## Quizes
 Which statement is not true about SOA?
@@ -670,8 +681,130 @@ Abstractions
     * Made up of multiple containers and defines the links between them
 
 Types of diagrams:
+* Context: A high-level diagram that shows actors and system dependencies
+    * Your system is a block in the middle
+    * Surrounded by users and other systems
+    * Detail is not important
+    * Focus on people and systems, not technology and protocols
+    * Motivation:
+        * It makes the context explicit so there are no assumptions
+        * It shows what is being added into the IT environment  
+        *  High-level for technical and non-technical people
+        *   Good starting point for discussions
+    * Audience
+        * Technical and non-technical people
+* Container: high-level technology choices and responsibilities
+    * Intent
+        * Helps identify overall shape,
+        * high-level technology decisions,
+        * responsibilities,
+        * container communications and for developers, where the code is
+    * Simple block diagram showing key technology choices
+    *  Container is any logical executable or processes that manage life-cycle of components
+    * Container is usually a middleware that requires some commitment on operating
+    * Example containers: 
+        * NoSQL databases (MongoDB, CouchDB, Redis, etc)
+        * External storage
+        *   Files systems
+        *   OS services
+    * For Each container
+        * Name: Logical name (“web server”, “database” etc)
+        * Technology: Choice of technology (Apache, Tomcat, Oracle 11g etc)
+        * Responsibilities: High-level statement of the containers responsibilites
+    * Motivation
+        * Container diagram shows inside the box
+        * Shows high-level technology choices
+        *    Relationships and methods for communications
+    * Audience
+        * Technical people (Nerds)
+* Component: for each container, what are the key logical components and their relationships
+    * Looking into the container with logical view of major components and their interactions
+    * Intent
+        *   Helps identify what components/services that makes up the system, how the system works at high-level, where components live
+    * Structure
+        * Draw the components/services that are in a single container
+        * If there are many services, it might be broken into some logical sections
+    * What is a component or service
+        *    Single responsibility
+        * Examples: Trade data system importer, risk calculator, authentication service, audit component etc
+        * Course grained building blocks
+    * For each component specify:
+        * Name: “Risk Calculator”, “Audit Component”
+        * Technology: Java, C#, Ruby, EJB, WFC
+        * Responsibilities: statement of purpose 
+    * Motivation
+        * Communicate logical structure within container, higher-level than class diagram, finer than container diagram
+        * Good way to understand how the system works and what it does
+        * Shows dependencies and deployable units
+    * Audience
+        * Devs
 * Classes: showing classes and their relationships, useful to
 explain design patterns
-* Component: for each container, what are the key logical components and their relationships
-* Container: high-level technology choices and responsibilities
-* Context: A high-level diagram that shows actors and system dependencies
+
+#F-08 Frameworks
+Frameworks are concrete, not abstract
+* Design patterns are conceptual, frameworks provide building blocks
+
+Pros:
+* Productivity
+* Well know application models and
+patterns
+* Tested functionality
+* Connection of different components
+* Use of open standards
+
+Cons:
+* Can be complicated, learning curve
+* Dependant on frameworks, difficult
+to change
+* Difficult to debug and find bugs
+* Performance problems can be
+difficult
+* Can be bought by an evil company
+
+Your program does not call the framework, it’s the framework that controls the execution of your program
+
+Inversion of Control (IoC) / Dependency injection
+* Your application runs in a container (framework)
+* Container manages the life-cycle of your object and provides context
+* The framework has the control
+
+Useful patterns when building a framework:
+* Dependency Injection: remove dependencies by injecting them (sometimes called Inversion of Control)
+* Template Method: extend a generic class and provide specific functionality
+    * Create a template for steps of an algorithm and let subclasses extend to provide specific functionality
+    * We know the steps in an algorithm and the order – We don’t know specific functionality
+    * How it works: 
+        * Create an abstract superclass that can be extended for the specific functionality 
+        * Superclass will call the abstract methods when needed
+    * When to use it?
+        * For processes where steps are known but some steps need to be changed
+        * Works if same team is doing the abstract and the concrete class
+    * When Not to Use it
+        * The concrete class is forced to inherit, limits possibilities
+        * Developer of the concrete class must understand the abstract calls
+        *  If another team is doing the concrete class as this creates too much communication load between teams
+* Strategy: Implement an interface to provide specific functionality
+    * Create a template for the steps of an algorithm and inject the specific functionality
+    * Algorithms can be selected on-the-fly at runtime depending on conditions
+    * Similar as Template Method but uses interface inheritance
+    * How it works:
+        * Create an interface to use in the generic algorithm
+        * Implementation of the interface provides the specific functionality
+        * Framework class has reference to the interface and setter method for the interface
+## Quizes
+We are building framework for games. It turns out that all the games are similar so we create an abstract class for basic functionality that does not change, and then extend that class for each game. What pattern is this?
+* A) Layer Supertype
+* X B) Template Method
+* C) Strategy
+* D) Dependency Injection
+
+# F-09 API DESIGN AND MICROSERVICES
+## Service vs monolith scaling
+Scalability is provided with multiple machines - Y scaling
+
+Possibility of better load management
+
+Monoliths deployed on multiple machines - X Scaling
+
+Multiple Services deployed on multiple machines - Y Scaling
