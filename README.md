@@ -20,6 +20,7 @@ Services provided by enterprise software are typically business-oriented tools s
 * security
 
  ## Enterpise Software slides
+
  The digital decade: 2000 - 2010  
 
  Post PC era 2011 - now
@@ -57,6 +58,7 @@ Cloud,
 NoSQL
 
 ## Software as a service 
+
 * is a software licensing and delivery model in which software is licensed on a subscription basis and is centrally hosted. It is sometimes referred to as "on-demand software", and was formerly referred to as "software plus services" by Microsoft. SaaS is typically accessed by users using a thin client via a web browser
 
 * The term "Software as a Service" (SaaS) is considered to be part of the nomenclature of cloud computing, along with Infrastructure as a Service (IaaS), Platform as a Service (PaaS), Desktop as a Service (DaaS)
@@ -74,6 +76,7 @@ Common Requirements
 Examples:  Gmail, Jira, Salesforce, Workday
 
 ## Infrastructure as a service  
+
 * Provides virtualised computing resources over the Internet
 Abstracts the user from the details of infrastructure
     * Physical computing resources
@@ -84,6 +87,7 @@ Abstracts the user from the details of infrastructure
 * “Utility Computing”
 
 ## Platform as a service
+
 Users manage deployed applications and environment config
 Users do not manage infrastructure (network, servers, storage)
 * OS
@@ -92,6 +96,7 @@ Users do not manage infrastructure (network, servers, storage)
 *  Web server
 
 ## Function-as-a-Service (FaaS)
+
 *  “Serverless computing”
 *  Cloud provider fully manages starting and stopping resources as
 needed to serve requests
@@ -100,6 +105,7 @@ provision servers for the back-end code to run on
 * Examples: AWS Lambda, Google Cloud Functions
 
 ## Backend-as-a-Service (BaaS)
+
 Provides web app and mobile apps with a way to link applications
 to backend cloud storage and backend applications
 
@@ -113,6 +119,7 @@ connecting apps to cloud services
 * Examples: Amazon Cognito, Firebase
 
 ## Tier vs Layer
+
 Tier implies physical layer
 * Example:Client-server is two-tier system: client on one machine, server on another
 
@@ -122,6 +129,7 @@ Layer is a logical construct
 on the same machine, then the database on a separate machine
 
 ## Object oriented programming
+
 OO is key to development of systems
 * Design for reusability, flexibility and performance
 
@@ -145,11 +153,13 @@ One of the biggest hurdles for developers
     *  New classes can be added without recompile
 
 ### Liskov Substitution Principle
+
 Subtypes must be substitutable for their base types. Code that uses references to base class
 must be able to use objects of derived classes without knowing it.
 
 
 ## Software Architecture
+
 Shared understanding of system’s design by the expert
 developers on a project - vision and structure
 * Highest-level breakdown of a system into its parts
@@ -159,6 +169,7 @@ and middleware
 * There are always multiple options
 
 ## Design Patterns
+
 Design using known ideas
 * Design patterns are standard solutions to common problems in
 software design
@@ -167,10 +178,12 @@ development
 * Patterns have name and definitions - not language dependant
 
 ### Dependency Injection - Inversion of control
+
 * make the caller responsible for setting the dependency
 * Dependency injection means giving an object its instance variables.
 
 ## Middleware
+
 Enterprise system are built on middleware
 
 * Can cover a broad spectrum of software and generally sits
@@ -179,6 +192,7 @@ between an application and an operating system
 messaging systems, transaction monitors
 
 ## Frameworks
+
 Frameworks is prewritten code to which you add your own code
 to solve a problem in a specific domain
 * Developers extend and add their business requirements
@@ -193,6 +207,7 @@ classes
 * Implement design patterns
 
 ### Quizes
+
 Which	of	the	following	statements	is	not	true?
 * A) The	challenge	ahead	is	to	connect	software
 * X B) The	PC	is	no	longer	a	device	for	development
@@ -214,6 +229,7 @@ Which of the following statement is not true?
 # Software Architecture - F03
 
 ## Conways law
+
 Organisations which design systems are constrained to
 produce designs which are copies of the communication
 structures of these organisations
@@ -229,10 +245,12 @@ to control their schedule and not depend on others
 * Priorities of teams are not shared
 
 ## Conway’s Second Law
+
 There’s never enough time to do something right, but
 there’s always enough time to do it over
 
 ## Monolithic Architecture
+
 Traditional Web Application Architecture
 
 All code is built into a single application that is deployed
@@ -246,6 +264,7 @@ problem in particular in scaling and
 organising teams
 
 ### Benefits
+
 Simple to understand
 * Straightforward to develop and test
 * One release and deployment
@@ -253,6 +272,7 @@ Simple to understand
 * Scaling is simple - just duplicate the system and use a load balancer
 
 ### Drawbacks
+
 * User interface challenge – old style UI architecture
 * Real-time applications (like node.js) don’t fit in easy
 * Obstacle to frequent deployment – fear of change
@@ -269,6 +289,7 @@ Simple to understand
 * Any change requires knowledge of the whole system
 
 ## Technical Dept
+
 Concept in programming that reflects the extra development
 work that arises when code that is easy to implement in the
 short run is used instead of applying the best overall solution
@@ -280,16 +301,19 @@ short run is used instead of applying the best overall solution
 * System becomes obsolete
 
 ## Big Ball of Mud
+
 *A Big Ball of Mud is a haphazardly structured, sprawling, sloppy, duct-tapeand-bailing-wire,*
 *spaghetti-code jungle. These systems show unmistakable signs*
 *of unregulated growth, and repeated, expedient repair*
 
 ## Component
+
 A component is a software building block that is
 * independently replaceable
 * independently upgradable
 
 ## Application Architecture
+
 Application is the focus
 * Contains classes, components, design patterns, frameworks,
 libraries
@@ -298,18 +322,21 @@ Lower-level aspects of software design
 * Concerned with technology stack and layering
 
 ## System Architecture
+
 * Focus on multiple applications across a number of tiers and technologies
 * Interactions between applications
 * Overall structure of the end-to-end software system at high-level
 * Mix of software and hardware
 
 ## Software Architecture
+
 * The combination of application and system architecture
 * includes the technical practices to build the software
     * Design Principles, Programming language Design patterns, Unit testing
     *  logging and exception handling Security, Performance
 
 ## Enterprise Architecture
+
 * How the enterprise is broken up in groups/departments
 * Business processes used
 * Workflows used
@@ -317,6 +344,7 @@ Lower-level aspects of software design
 across the organization to get work done
 
 ## Agile Architecture
+
 Agile refers to a **methodology** of building software
 * moving fast, embracing change, release often, feedback cycles etc.
 * Agile architecture means it can **react to change**, is easy to change, is
@@ -328,6 +356,7 @@ extendable
     * Act
 
 ## Scale Cube
+
 * X scaling: Duplicate the system
     *  running multiple copies of an application behind a load balancer.
 * Y scaling: Partition the Application
@@ -336,6 +365,7 @@ extendable
     * each server is responsible for only a subset of the data. Some component of the system is responsible for routing each request to the appropriate server
 
 ## SOA Service Oriented Architecture, Better: Microservice architecture
+
 SOA actually means that components of an application act as **interoperable services**, and can be used
 **independently and recombined** into other applications
 
@@ -350,7 +380,12 @@ independently upgradable
 * Services are like the Unix commands where output from
 one is in input to another
 
+A service has a published interface - an API
+* The only way to use the service is to use the API
+* Everything else in the service is encapsulated, including the data
+
 ### Bezos Mandate
+
 1. All teams will henceforth expose their data and functionality through service interfaces
 2. Teams must communicate with each other through these interfaces
 3. There will be no other form of interprocess communication allowed
@@ -360,10 +395,12 @@ one is in input to another
 7. Have a nice day!
 
 ### Microservices
+
 The microservice architectural style is an approach to
 developing a single application as a suite of small services, each running in its own process and communicating with lightweight mechanisms, often an HTTP resource API
 
 ### Single Responsibility Principle (SPR) 
+
 * a class should have one and only one reason to change, that  **reason to change**  is its responsibility.
 * Gather together those things that change for the same reason, and separate those things that change for different reasons 
 * Service boundaries focus on business boundaries
@@ -372,6 +409,7 @@ developing a single application as a suite of small services, each running in it
 
 
 ## Quizes
+
 Which statement is not true about SOA?
 * X A) SOA does not affect performance
 * B) No service can access other service data except using APIs
@@ -383,10 +421,12 @@ Which statement is not true about SOA?
 LAYERING - missing
 
 ## Diagrams
+
 * Class diagram shows relationships
 * Sequence diagrams show flows
 
 ## Abstract Classes
+
 Abstract classes cannot be instantiated
 * Abstract classes put the responsibility of implementation on subclasses
 * Classes extending an abstract class must implement the abstract methods
@@ -394,6 +434,7 @@ Abstract classes cannot be instantiated
 * Normal classes are concrete classes
 
 ## Interfaces
+
 * Interfaces cannot be instantiated
 Interface is a “class without implementation”
 * Not really a class since an interface can extend multiple other interfaces
@@ -409,6 +450,7 @@ Classes implement interfaces
 * Must implement all the methods – or be abstract
 
 ## Generic Programming
+
 Programming in an data type independent way
 * Same code is used regardless of the data type
 * Example
@@ -416,6 +458,7 @@ Programming in an data type independent way
 * Design Principle: Always use the most generic data type possible
 
 ## Reflection
+
 Reflection allows examination and manipulation of objects at **runtime**
 * Get information about a class
     * Fields, methods, constructors, and super classes
@@ -426,10 +469,12 @@ unknown to your program until runtime
 until runtime   
 
 # Design Principles
+
 Software development has over the years established a
 set of principles that apply to building software
 
 ### Separation of Concerns
+
 * The process of dividing the application into distinct
 units without overlapping
 * Identify the aspects of your application that vary and separate them from what stays the same
@@ -444,6 +489,7 @@ Model View Controller
 HTML, CSS, JavaScript
 * Goal is: Low Coupling
 ### Coupling
+
 * When two object are loosley coupled, the can interact but they
 have very little knowledge of each other
 * Loose coupling principle: Strive for loosely coupled designs between objects that interact
@@ -454,18 +500,23 @@ coupling is low
 * Loosely coupled systems are easier and cheaper to maintain
 * Goal: Loose/low Coupling 
 ### Cohesion
+
 * Refers to the degree to which the elements of a module
 belong together
 * measures the strength of relationship between pieces of functionality within a given module
 * In highly cohesive systems functionality is strongly related
 * Goal is: High Cohesion
+
 ### The Interface Design Principle (GoF) gang of four
+
 * Program to an interface, not an implementation
 
 ### The Composition Design Principle (GoF)
+
 * Favour composition over inheritance
    
 ### Don’t Repeat Yourself – DRY
+
 * Every piece of knowledge must
 have a single, unambiguous,
 authoritative representation within
@@ -474,6 +525,7 @@ a system
 ???
 
 ### Open Closed Principle
+
 Software entities like classes,
 modules and functions should be
 open for extension but closed for
@@ -487,6 +539,7 @@ classes
 code which does not break on addition of new functionality
 
 ## Object Oriented Design
+
 * Good design
 * Is based on OO principles
 * Abstracts complex APIs such as J2EE
@@ -512,7 +565,9 @@ b.f();
 
 -----------------
 # DESIGN PATTERNS - F05
+
 ## Design Patterns
+
 Design pattern is a general solution to a common
 problem in software design
 
@@ -535,6 +590,7 @@ Data Access Object == Table Data Gateway
 Dependency Injection == Inversion of Control
 
 ## Observer pattern
+
 One or more observers or listeners are registered to
 observe an event which may be raised by the observed
 object (the subject)
@@ -551,6 +607,7 @@ Benefits
 * Subject does not become dependent on multiple observers
 
 ## Base Patterns
+
 Gateway
 * **An object that encapsulates access to an external system or resource**
 * Wraps external APIs into an interface
@@ -649,6 +706,7 @@ Which	of	these	statements	is	not	true
 * D)	Design	Patterns	can	have	ambiguous	names
 
 # F-07 Visualising Software Development
+
 * Diagrams are communication tools
 * Architecture is about Structure and Vision
 * Helps everybody in the team get the “big picture”
@@ -742,6 +800,7 @@ Types of diagrams:
 explain design patterns
 
 #F-08 Frameworks
+
 Frameworks are concrete, not abstract
 * Design patterns are conceptual, frameworks provide building blocks
 
@@ -800,7 +859,9 @@ We are building framework for games. It turns out that all the games are similar
 * D) Dependency Injection
 
 # F-09 API DESIGN AND MICROSERVICES
+
 ## Service vs monolith scaling
+
 Scalability is provided with multiple machines - Y scaling
 
 Possibility of better load management
@@ -808,3 +869,213 @@ Possibility of better load management
 Monoliths deployed on multiple machines - X Scaling
 
 Multiple Services deployed on multiple machines - Y Scaling
+
+## Rest
+
+REST stands for Representational State Transfer it is an
+Architectural Style for distributed hypermedia systems
+
+An Architectural Style
+* REST stands for REpresentational State Transfer
+* defined in Roy Fielding’s dissertation from 2000
+* Why rest?
+    * Scalability
+    * Generality
+    * Independence
+    * Latency
+    * Security
+    * Encapsulation
+What is REST?
+* REST is nothing more than Web Service with the fancy URIs
+* REST = CRUD
+* POST, GET, PUT, DELETE = Create, Read, Update, Delete
+* CRUD is a subset of REST
+The Web is the largest known implementation of a system
+conforming to the REST architectural style
+
+REST is defined by 4
+interface constraints:
+1. Identification of resources
+2. Manipulation of resources
+through representations
+3. Self-descriptive messages
+4. Hypermedia as the engine of
+application state (HATEOAS)
+
+#F-10 Architechture Considerations
+
+### Performance
+* Performance is about how fast something is
+
+    Response Time
+    * amount of time for the system to process a request from the outside
+
+    Responsiveness
+    *  how quickly the system acknowledges a request as opposed to processing it
+
+    Latency
+    *  minimum time required to get any form of response, even if the work to be done is nonexistent
+
+    Throughput
+    *  how much stuff you can do in a given amount of time
+
+    Load
+    * a statement of how much stress a system is under
+
+    Load sensitivity
+    * expression of how the response time
+    varies with the load
+
+    Efficiency
+    * performance divided by resources
+
+    Capacity
+    * indication of maximum effective load
+
+### Scalability
+* The measure of how adding a resource affects the performance
+    * Vertical: Make the hardware faster, more memory etc
+    * Horizontal: Get more hardware – scaling out
+* Request per second
+    * How many concurrent transaction can the system handle
+
+### Availability
+* The degree to which your software is operational
+    * Measured in terms of *nines* – 99.99% per year - four nines
+
+### Disaster Recovery
+* Response to failures
+    *    Disk crash, faulty network card etc
+    *    Network downtime
+* External disaster – force major
+    *    Fires, earthquake
+* Business Continuity Plan
+    *    Specifies how a business can recover from disasters
+
+### Software Requirements
+* Flexibility
+    * The ability for non-technical people to modify business rules within the system
+* Extensibility
+    * The ability to extend and modify software for new needs
+* Maintainability
+    * Think about the cost of running software over some time
+
+### Non-Functional Requirements
+*  MoSCoW
+    *    Must, Should, Could, Wont
+
+### Constraints
+* Time and budget constraints - Deadline
+* Technology constraints - Technology Stack
+* Existing System and Interoperability
+* Target Deployment Platform -  Windows or Linux
+* Technology Maturity 
+* Open Source
+* Past Failures
+
+People Constraints
+* Size of Teams – Two Pizza Teams are common
+– Enough people without too many communication paths
+
+# F-11 ORGANISING DOMAIN LAYER
+Domain Layer
+* The Application of the system
+* The “Business logic”
+* Tends to creep into presentation and data source
+
+*Business Logic*
+* Business Rules including all special cases
+* Domain Logic
+
+Define Domain Logic
+* If all environment (noise) is taken way, what is left should be domain
+logic
+* Environment is any middleware (web, data, ejb)
+
+Domain Logic should be
+* Simple classes and interfaces – POJOs
+* Easy to test
+* Easy to move around
+* Easy to access
+* Limited dependencies
+
+The Three Layers
+* Dependencies
+    * Presentation gets information from lower layers, preferable Domain Layer
+    * Domain or Data Source Layers should not depend on the Presentation Layer
+    * Domain Layer depends on Data Source Layer
+    *  Data Source Layer could use some objects from the Domain Layer
+
+Presentation Logic
+* How to display items, how things look
+* The presentation should – Have easy and unified access to the data
+
+Data Source Logic
+* How to query and store items
+    * Data manipulation for upper layer
+
+Application Logic
+* Having to do with application responsibilities
+    * “Workflow” logic – Noise
+* Example:
+    *    Notifying contract administrator
+    *    Checking HTTP parameters and selecting which controller to pass the responsibility to
+
+### Domain Layer Patterns
+Transaction Script
+* Organizes business logic by procedures where each procedure handles
+single request from the presentation
+* Most business applications can be thought of as a series of transactions
+    * A Transaction Script organizes all this logic primarily as a single
+procedure
+* Works well if model is simple
+    * Small amount of logic
+    * No state needed
+    * Moving data between presentation and database
+* Problems
+    * Code duplication between transactions
+    * Common code tends to be duplicated
+    * Since no state is used, and each transaction is separate from any
+other, there might be too many calls to database layer
+
+Domain Model
+* An object model of the domain that incorporates both data and behaviour
+* Rules and logic describe many different cases and slants of
+behavior
+* Web of interconnected objects
+    * Where each object represents some meaningful entity
+    * Dependencies between objects
+* How it works:
+    * Object that represent data (value objects) and business rules (behavior)
+* Simple model
+    * Similar to the database design
+    * Simple to map to the database
+* Rich model
+    *    Different from the database design
+    *    Better for solving some complex logic and doing calculation
+* Multiple classes each with different responsibility
+* Each class has data and logic to calculate
+Table Module
+* One class that provides domain logic to table or view in database
+* A single instance that handles the business logic
+for all rows in a database table or view
+* Organizes domain logic with one class per table in the database
+    * Single instance of the class contains various procedures that will act on the data
+* How it works:
+    * One class that provides domain logic to table or view in database
+    * A Domain Model will have one order object per order while a Table Module will have one object to handle all orders
+* When to use it
+    * Useful when application is centered on data
+    * Objects in the model are similar to the database
+
+### Service Layer
+
+Defines an application’s boundary with a layer of
+services that establishes a set of available
+operations and coordinates the application’s
+response in each operation
+
+Defines an application's boundary 
+* Provides a set of available operations from the perspective of
+interfacing client layers
+* Encapsulates the application's business logic
