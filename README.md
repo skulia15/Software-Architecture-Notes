@@ -294,6 +294,9 @@ Concept in programming that reflects the extra development
 work that arises when code that is easy to implement in the
 short run is used instead of applying the best overall solution
 
+Referring to the eventual consequences of poor
+system design
+
 * Cost of Change (CoC) becomes too high
 * Maintenance becomes difficult
 * People don’t want to work on the code
@@ -1318,6 +1321,10 @@ What Domain Layer pattern would make sense?
 
 # F-19 Scalability
 ## Requirements of 21st century web systems
+
+The only meaningful way to know about system’s performance is to
+measure it
+
 * High availability
 * Millions of simultaneous users
 * Peak load of 1000s tx/sec
@@ -1449,7 +1456,48 @@ from parallelization
 
 Amdahl’s Corollary
 * Make the common case fast (Common case = most time consuming)
-* 
+
+### Transactions
+Transaction is a bounded sequence of work
+* Transaction must complete on an all-or-nothing basis
+
+All resources are in consistent state before and after the transaction
+
+Transactions must have ACID properties
+
+* **A**tomicity: All steps are completed successfully – or rolled back
+* **C**onsistency: Data is consistent at the start and the end of the transaction
+* **I**solation: Transaction is not visible to any other until that transaction commits successfully
+* **D**urability: Any results of a committed transaction must be made permanent
+
+Transactions lock tables (or resources)
+
+Serializable Transactions
+* Full isolation
+* Transactions are executed serially, one after the other
+*  Guarantees correctness
+*  damages liveness and performance - Serialization crates scalability bottlenecks
+
+Isolation Level
+* use as low isolation as possible while keeping
+correctness
+
+BASE
+* Basically Available: Guarantees availability of the database
+* Soft state: The state of the system can change over time - even without
+input.
+* Eventual consistency:  The system will eventually become consistent
+over time given no new input
+
+### CAP Theorem
+States that it is impossible for a distributed computer system to
+simultaneously provide all three of the following guarantees:
+* Consistency: all nodes see the same data at the same time
+* Availability: a guarantee that every request receives a response
+about whether it was successful or failed
+* Partition tolerance: the system continues to operate despite
+arbitrary message loss or failure of part of the system
+
 ## Quizes
 We are building an application for processing development
 grants. The application is complicated and users can login any
@@ -1459,3 +1507,137 @@ pattern would we use for storing the session?
 * B) Server Session State
 * X C) Database Session State
 * D) No state required
+
+# F-20 Architecture and Agile
+
+## Agile Principles
+
+KISS: Keep It Simple Stupid
+* Focus on simplicity
+* Quick, easy, least integrating parts
+* Avoid over-engineering
+* Drop anything that takes too long
+
+DTSTTCPW: Do The Simplest This That Could Possibly Work
+* Then refactor and refine
+
+YAGNI: You Aren’t Gonna Need It
+* Deliver only what is asked, no more, no less
+
+DRY: Don’t Repeat Yourself
+* Anything – just avoid duplication
+* Duplication is a waste, promotes error, and results in maintenance
+problems
+
+OAOO: Once And Only Once
+* A variant for DRY with human input
+* Automate repetitive tasks – testing, build, deployment
+* Use scripts - automate
+
+GEFN: Good Enough For Now
+* The goal is not to archive perfect state but to reach a working stage
+at the end of each iteration
+* Each iteration should build on the output of the previous one and
+should leave your application on an better state than before
+
+RDUF: Rough Design Up Front
+* Come up with high-level design to provide guidelines for initial
+iterations
+* Then improve on the previous iterations
+
+JED: Just Enough Documentation
+* Less is more
+* Document what you know – not what you want or intent to know
+* Document early and often
+
+FFwd: Fail Forward / Fail Fast
+* Catch mistakes early
+* Mistakes should be small and easy to correct
+
+Continuous Integration
+* Whenever a developer commits his changes, it automatically triggers
+a build process
+* This allows you to check immediately if it caused a build to break
+* Reduces integration hell
+* Goal is to have deliverable software at all times
+
+## Development methods
+
+Waterfall: Sequential Process, All design front-up, Process heavy
+
+RAD: Rapid Application Development: Rapid Prototyping, Prototype not plan, Process Light
+
+RUP: Rational Unified Process: Framework for iterative development, Can be process heavy
+
+Agile: Iterative and incremental, Can be process light
+* Agile teams favor responding to change over following a plan
+* no upfront design
+* But we still need Architecture
+
+## Boundaries for xDD
+Functional Requirements
+* Requirements drive architecture
+User stories, acceptance tests, etc
+
+Quality Attributes
+* Non-functional Requirements
+Scalability, performance, security, etc
+
+Constraints
+* Real-world constraints
+Approved technology, people, standards etc
+
+Principles
+* Principles – Rules for consistency
+Layering strategy, separation of concerns, patterns etc 
+
+Agile teams need a framework and
+boundaries – and should be trusted to do the
+rest
+
+## Quantifying Risk
+Risk management is crucial in agile
+* Not addressing Risk can kill projects
+* Probability: How likely is this to happen?
+* Impact: What is the negative impact if this occurs?
+
+
+## Just Enough Design
+1. Structure
+    * What: understand the structural elements and how they fit together
+    * How: Design and decomposition down to containers and components
+2. Risk
+    * What: Identify and mitigate the highest priorities
+    * How: Risk storming and concrete experiments
+3. Vision
+    *   What: Create and communicate a vision for the team to work with
+    *   How: Context, Container and component diagrams
+
+# F-21 Design Principles
+SOLID: Promotes Object Oriented Design and Development
+* S - Single-responsiblity principle
+    * A class should have one and only one reason to change, meaning that a class should have only one job.
+    * Violating this principle leads to low cohesion and makes
+the code brittle and leads to code bloat and confusion
+* O - Open-closed principle
+    * Objects or entities should be open for extension, but closed for modification.
+    * Adding new functionality would involve minimal changes to existing code
+    * Most changes will be handled as new methods and new classes
+    * Designs following this principle would result in resilient code which does not break on addition of new functionality
+* L - Liskov substitution principle
+    * every subclass/derived class should be substitutable for their base/parent class.
+    * All code operating with reference to the base class should be completely transparent to the type of the inherited object
+    * It should be possible to substitute an object of one type with another within the same class hierarchy
+    * Inheriting classes should not perform any actions that will invalidate the assumptions made by the base class 
+* I - Interface segregation principle
+    * A client should never be forced to implement an interface that it doesn't use or clients shouldn't be forced to depend on methods they do not use.
+    * Split large interfaces into smaller and more specific interfaces
+    * The smaller the interface, the better
+    * For fat or polluted interfaces clients are forced to
+depend on methods they do not use
+* D - Dependency Inversion Principle
+    * Entities must depend on abstractions not on concretions. It states that the high level module must not depend on the low level module, but they should depend on abstractions.
+    * Low-level components should depend on high-level, not vice versa.
+    * The high-level components should be the one defining logic and enforcing change
+    * High-level components depending on low-level components decreases the capability of the highlevel components
+    * Dependency inversion is the very heart of framework design and loosely coupled design
