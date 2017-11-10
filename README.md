@@ -638,6 +638,7 @@ need to make them independent
     * The tricky part is what system invokes them – third party system or make the **Mapper** an **Observer**
 * When to Use it
     * When you want to decouple different parts of a system
+
 Layer Supertype
 * A type that acts as the supertype for all types in its layer
 * Super class that contains common functionality in a layer
@@ -645,6 +646,7 @@ Layer Supertype
     * Use this pattern when you have common features from all objects in a layer
 * Example
     * Domain objects can have a common superclass for ID handling
+
 Separated Interface ??
 * Defines an interface in a separate package from its implementation
 * Avoids creating unwanted dependencies
@@ -659,6 +661,7 @@ Separated Interface ??
     * Domain layer depends on Data Source layer
     * Data Source layer cannot access Domain layer
 * User of the interface should not know the implementation
+
 Registry
 * A well-known object that other objects can use to find common objects and services
 * A registry is a global object
@@ -672,6 +675,7 @@ Registry
 * Only one instance running
 * When to Use it?
     * As a last resort 
+
 Value Object
 * A small simple object, like money or date range, whose equality isn’t based on identity
 * Small and easily created objects that hold and represent some data
@@ -681,6 +685,7 @@ Value Object
     * Can be immutable (example is the Date class)
 * When to use it
     * When you’re basing equality on something other than identity
+
 Plugin
 * Links classes during configuration rather than compilation
 * Use plugin to provide specific implantation
@@ -689,6 +694,7 @@ Plugin
 interface
 * When to Use It
     * Use plugin when you have behavior that requires different implementations based on runtime environment
+
 Service Stub
 * Removes dependence upon problematic
 services during testing
