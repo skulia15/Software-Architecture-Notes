@@ -808,7 +808,7 @@ Types of diagrams:
 * Classes: showing classes and their relationships, useful to
 explain design patterns
 
-#F-08 Frameworks
+# F-08 Frameworks
 
 Frameworks are concrete, not abstract
 * Design patterns are conceptual, frameworks provide building blocks
@@ -911,7 +911,7 @@ through representations
 4. Hypermedia as the engine of
 application state (HATEOAS)
 
-#F-10 Architechture Considerations
+# F-10 Architechture Considerations
 
 ### Performance
 * Performance is about how fast something is
