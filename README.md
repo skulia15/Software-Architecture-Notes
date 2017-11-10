@@ -1641,3 +1641,31 @@ depend on methods they do not use
     * The high-level components should be the one defining logic and enforcing change
     * High-level components depending on low-level components decreases the capability of the highlevel components
     * Dependency inversion is the very heart of framework design and loosely coupled design
+
+# F-22 Summary and Conclusion
+Systems in general work poorly or not at all
+
+Murphy’s Law: If anything can go wrong, it will
+
+Parkinson’s Law: Work expands so as to fill the time available for its completion 
+
+Peter Principle: In a hierarchy every employee tends to rise to his level of
+incompetence ... in time every post tends to be occupied by an
+employee who is incompetent to carry out its duties ... Work is
+accomplished by those employees who have not yet reached their
+level of incompetence 
+
+Bikeshedding: Futile investment of time and energy in discussion of marginal technical issues
+* Procrastination
+
+Yak shaving is programming lingo for the seemingly endless series of small tasks that have to be completed before the next step in a project can move forward. 
+
+# Quizes
+Hvert af eftirfarandi mynstrum fyrir lotustöðu (e. session state) gera clustering erfitt?
+* X A) Server Session State
+
+* B) Client Session State
+* C) Database Session State
+* D) Application Session State
+
+
